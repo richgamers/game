@@ -1,1080 +1,528 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DUCGameMoney - Secure Game Payments</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>HTML Future Stick - Gaming Guide</title>
     <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-        }
-
-        :root {
-            --primary: #00f7ff;
-            --secondary: #7d12ff;
-            --accent: #ff00c8;
-            --dark: #0a0a1a;
-            --darker: #050510;
-            --card-bg: rgba(15, 15, 35, 0.7);
-            --text: #e0e0ff;
-            --warning: #ff4d6d;
-            --success: #00e6a9;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: 'Exo 2', sans-serif;
-            background: linear-gradient(135deg, var(--darker), var(--dark));
-            color: var(--text);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            background-color: #f0f8ff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
-            overflow-x: hidden;
-            position: relative;
         }
 
-        /* Cyber grid background */
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                linear-gradient(rgba(10, 10, 30, 0.9), rgba(10, 10, 30, 0.9)),
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 1px,
-                    rgba(0, 247, 255, 0.05) 1px,
-                    rgba(0, 247, 255, 0.05) 2px
-                ),
-                repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 1px,
-                    rgba(0, 247, 255, 0.05) 1px,
-                    rgba(0, 247, 255, 0.05) 2px
-                );
-            z-index: -1;
-        }
-
-        .cyber-container {
-            width: 100%;
-            max-width: 480px;
-            background: var(--card-bg);
-            border: 1px solid rgba(0, 247, 255, 0.15);
-            border-radius: 20px;
-            padding: 30px 25px;
-            backdrop-filter: blur(12px);
-            box-shadow: 
-                0 0 30px rgba(0, 247, 255, 0.15),
-                0 10px 30px rgba(0, 0, 0, 0.5);
+        header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
+            padding: 40px 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
-        /* Neon border effect */
-        .cyber-container::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--secondary), var(--accent), var(--primary));
-            border-radius: 20px 20px 0 0;
-            animation: borderPulse 3s infinite;
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        @keyframes borderPulse {
-            0% { opacity: 0.6; }
-            50% { opacity: 1; }
-            100% { opacity: 0.6; }
+        .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            opacity: 0.9;
         }
 
-        h1, h2, h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .start-btn {
+            display: inline-block;
+            background-color: #ff6b6b;
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .start-btn:hover {
+            background-color: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .guide-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid #2a5298;
         }
 
         h2 {
-            color: var(--primary);
-            margin-bottom: 25px;
-            text-shadow: 0 0 10px rgba(0, 247, 255, 0.6);
-            font-size: 24px;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-
-        h2::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 25%;
-            width: 50%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
-        }
-
-        .step-indicator {
+            color: #1e3c72;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
             display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-            gap: 10px;
+            align-items: center;
         }
 
-        .step {
-            width: 35px;
-            height: 35px;
+        h2 .step-number {
+            background-color: #2a5298;
+            color: white;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            background: rgba(125, 18, 255, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            font-size: 16px;
-            color: rgba(224, 224, 255, 0.6);
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .step.active {
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
-            color: white;
-            box-shadow: 0 0 15px rgba(125, 18, 255, 0.5);
-        }
-
-        .step.completed::after {
-            content: "✓";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-
-        .step-line {
-            flex-grow: 1;
-            height: 2px;
-            background: rgba(125, 18, 255, 0.2);
-            margin: auto 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .step-line.active {
-            background: linear-gradient(90deg, var(--secondary), var(--primary));
-        }
-
-        .step-line.active::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            animation: shine 1.5s infinite;
-        }
-
-        @keyframes shine {
-            0% { left: -100%; }
-            100% { left: 100%; }
+            margin-right: 15px;
+            font-size: 1.2rem;
         }
 
         .step-content {
-            display: none;
-        }
-
-        .step-content.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .game-options {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin: 25px 0;
-        }
-
-        .game-card {
-            cursor: pointer;
-            border: 1px solid rgba(0, 247, 255, 0.15);
-            border-radius: 15px;
-            padding: 15px;
-            background: rgba(20, 20, 45, 0.6);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .game-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 247, 255, 0.2);
-        }
-
-        .game-card.selected {
-            border-color: var(--primary);
-            background: rgba(0, 247, 255, 0.1);
-            box-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
-        }
-
-        .game-card.selected::after {
-            content: "✓";
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            width: 25px;
-            height: 25px;
-            background: var(--primary);
-            color: var(--dark);
-            border-radius: 50%;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            box-shadow: 0 0 10px var(--primary);
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: flex-start;
         }
 
-        .game-card img {
-            width: 80px;
-            height: 80px;
-            border-radius: 12px;
-            object-fit: cover;
-            margin-bottom: 12px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .game-card p {
-            font-weight: 600;
-            font-size: 16px;
-            color: var(--text);
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--text);
-            font-size: 14px;
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 14px 15px;
-            border-radius: 10px;
-            border: 1px solid rgba(0, 247, 255, 0.2);
-            background: rgba(10, 15, 30, 0.5);
-            color: white;
-            font-size: 16px;
-            font-family: 'Exo 2', sans-serif;
-            transition: all 0.3s ease;
-        }
-
-        .input-field:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 10px rgba(0, 247, 255, 0.3);
-        }
-
-        .input-field::placeholder {
-            color: rgba(224, 224, 255, 0.5);
-        }
-
-        .currency-input {
-            position: relative;
-        }
-
-        .currency-input span {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 18px;
-            color: var(--text);
-        }
-
-        .currency-input input {
-            padding-left: 35px;
-        }
-
-        .conversion-display {
-            background: rgba(0, 247, 255, 0.1);
-            border-radius: 10px;
-            padding: 12px;
-            margin: 15px 0;
-            font-weight: 500;
-            border: 1px dashed rgba(0, 247, 255, 0.3);
-        }
-
-        .warning {
-            color: var(--warning);
-            font-size: 14px;
-            margin: 10px 0;
-            text-align: left;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .warning i {
-            font-size: 16px;
-        }
-
-        .summary-card {
-            background: rgba(20, 20, 45, 0.6);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 25px 0;
-            border: 1px solid rgba(0, 247, 255, 0.2);
-            text-align: left;
-        }
-
-        .summary-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 12px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .summary-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .summary-label {
-            color: rgba(224, 224, 255, 0.7);
-        }
-
-        .summary-value {
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        .qr-container {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            display: inline-block;
-            margin: 20px 0;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
-        }
-
-        .qr-container::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(transparent, rgba(0, 247, 255, 0.5), transparent);
-            animation: rotate 4s linear infinite;
-            z-index: 0;
-        }
-
-        @keyframes rotate {
-            100% { transform: rotate(360deg); }
-        }
-
-        .qr-container img {
-            position: relative;
-            z-index: 1;
+        .step-image {
+            flex: 1;
+            min-width: 300px;
             border-radius: 8px;
-        }
-
-        .timer {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 22px;
-            color: var(--primary);
-            text-shadow: 0 0 10px rgba(0, 247, 255, 0.7);
-            margin: 15px 0;
-            letter-spacing: 2px;
-        }
-
-        .payment-methods {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 25px 0;
-        }
-
-        .method-card {
-            width: 100px;
-            height: 100px;
-            border-radius: 12px;
-            background: rgba(20, 20, 45, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            opacity: 0.4;
-            cursor: not-allowed;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .method-card.active {
-            background: rgba(0, 247, 255, 0.1);
-            border-color: var(--primary);
-            opacity: 1;
-            cursor: pointer;
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 247, 255, 0.3);
-        }
-
-        .method-card.unavailable::after {
-            content: "✕";
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            width: 25px;
-            height: 25px;
-            background: var(--warning);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 14px;
-            box-shadow: 0 0 10px var(--warning);
-        }
-
-        .method-card .logo {
-            width: 50px;
-            height: 50px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            margin-bottom: 10px;
-        }
-
-        .method-card .label {
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .card-logo {
-            background-image: url('https://www.slaterjohn.com/wp-content/uploads/2020/11/Major-Cards.png');
-        }
-
-        .paypal-logo {
-            background: linear-gradient(135deg, #003087 0%, #009cde 50%, #012169 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: bold;
-            font-size: 18px;
-            letter-spacing: -1px;
-        }
-
-        .upi-logo {
-            background-image: url('https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fexb2bvgjlfysy5dkya2u.jpeg');
-            background-size: cover;
-            border-radius: 10px;
-        }
-
-        .trust-badge {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 25px;
-            color: var(--success);
-            font-weight: 500;
-        }
-
-        .trust-badge i {
-            font-size: 20px;
-        }
-
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 16px;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 600;
-            font-size: 16px;
-            border: none;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
-            color: #0a0a1a;
-            cursor: pointer;
-            margin-top: 25px;
-            position: relative;
             overflow: hidden;
-            transition: all 0.3s ease;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(125, 18, 255, 0.5);
+        .step-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
         }
 
-        .btn:disabled {
-            background: rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.4);
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
+        .step-image img:hover {
+            transform: scale(1.03);
         }
 
-        .btn:disabled:hover {
-            transform: none;
+        .step-instructions {
+            flex: 1;
+            min-width: 300px;
         }
 
-        .status-indicator {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .status-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--success);
-            box-shadow: 0 0 10px var(--success);
-        }
-
-        .status-text {
-            font-size: 14px;
-            color: var(--success);
-        }
-
-        /* Animation for cyber elements */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .floating {
-            animation: float 3s ease-in-out infinite;
-        }
-
-        /* Payment Status Styles */
-        .payment-status {
-            background: rgba(20, 20, 45, 0.6);
-            border-radius: 15px;
+        .instructions {
+            background-color: #e8f4ff;
             padding: 20px;
-            margin: 25px 0;
-            border: 1px solid rgba(0, 247, 255, 0.2);
-            text-align: center;
-        }
-
-        .status-icon {
-            font-size: 48px;
+            border-radius: 8px;
             margin-bottom: 15px;
         }
 
-        .status-success {
-            color: var(--success);
+        .instructions h3 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
         }
 
-        .status-failed {
-            color: var(--warning);
+        .instructions p {
+            margin-bottom: 10px;
         }
 
-        .transaction-details {
-            background: rgba(0, 247, 255, 0.1);
-            border-radius: 10px;
-            padding: 15px;
-            margin: 15px 0;
-            text-align: left;
+        .language-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
         }
 
-        .transaction-id {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 18px;
-            color: var(--primary);
-            margin: 10px 0;
-            text-align: center;
-        }
-
-        .check-status-btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
-            color: #0a0a1a;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 15px;
+        .lang-btn {
+            background-color: #e8f4ff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
             transition: all 0.3s ease;
+            border-radius: 5px 0 0 5px;
         }
 
-        .check-status-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(125, 18, 255, 0.4);
+        .lang-btn:last-child {
+            border-radius: 0 5px 5px 0;
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 480px) {
-            .cyber-container {
-                padding: 25px 15px;
+        .lang-btn.active {
+            background-color: #2a5298;
+            color: white;
+        }
+
+        .language-content {
+            display: none;
+        }
+
+        .language-content.active {
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
             }
             
-            .game-options {
-                grid-template-columns: 1fr;
+            .step-content {
+                flex-direction: column;
             }
             
-            .payment-methods {
-                flex-wrap: wrap;
-            }
-            
-            .method-card {
-                width: 80px;
-                height: 80px;
+            .step-image, .step-instructions {
+                min-width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="cyber-container">
-        <!-- Step indicator -->
-        <div class="step-indicator">
-            <div class="step active">1</div>
-            <div class="step-line"></div>
-            <div class="step">2</div>
-            <div class="step-line"></div>
-            <div class="step">3</div>
-            <div class="step-line"></div>
-            <div class="step">4</div>
+    <div class="container">
+        <header>
+            <h1>HTML Future Stick</h1>
+            <p class="tagline">Your Ultimate Gaming Companion</p>
+            <a href="https://duc.systeme.io" class="start-btn">Start Now</a>
+        </header>
+
+        <div class="language-toggle">
+            <button class="lang-btn active" data-lang="english">English</button>
+            <button class="lang-btn" data-lang="hindi">हिंदी</button>
         </div>
 
-        <!-- Step 1: Game Selection -->
-        <div class="step-content active" id="step1">
-            <h2>Select Your Game</h2>
-            <div class="game-options">
-                <div class="game-card" onclick="selectGame('bgmi')">
-                    <img src="https://cdn.unipin.com/images/icon_product_pages/1702624882-icon-BGMI_AppIcon_11zon.png" alt="BGMI" class="floating">
-                    <p>BATTLEGROUNDS MOBILE INDIA</p>
+        <!-- Step 1: Sign Up / Log In -->
+        <div class="guide-section">
+            <h2><span class="step-number">1</span> Account Setup</h2>
+            <div class="step-content">
+                <div class="step-image">
+                    <img src="https://d1yei2z3i6k35z.cloudfront.net/12055198/690883448099a_Screenshot2025-11-03155444.png" alt="Sign Up / Log In">
                 </div>
-                <div class="game-card" onclick="selectGame('ff')">
-                    <img src="https://c2c.fp.guinfra.com/file/67d948e939b9eb4e0957db76XvgP03RK03" alt="Free Fire" class="floating">
-                    <p>FREE FIRE MAX</p>
-                </div>
-            </div>
-            <button class="btn" id="next1" onclick="nextStep(2)" disabled>Continue</button>
-        </div>
-
-        <!-- Step 2: Enter Details -->
-        <div class="step-content" id="step2">
-            <h2>Enter Details</h2>
-            <div class="input-group">
-                <label for="uid">Player ID</label>
-                <input type="text" id="uid" class="input-field" placeholder="Enter your game ID" oninput="validate()">
-            </div>
-            
-            <div class="input-group">
-                <label for="amount">Top-Up Amount</label>
-                <div class="currency-input">
-                    <span>₹</span>
-                    <input type="number" id="amount" class="input-field" value="800" placeholder="Enter amount" oninput="calculate()">
-                </div>
-            </div>
-            
-            <div class="conversion-display" id="conversion">Select a game to see conversion</div>
-            <div class="warning" id="warning"><i class="fas fa-exclamation-circle"></i> Minimum amount: ₹800</div>
-            
-            <button class="btn" id="next2" onclick="nextStep(3)" disabled>Continue to Payment</button>
-        </div>
-
-        <!-- Step 3: Payment Method -->
-        <div class="step-content" id="step3">
-            <h2>Select Payment Method</h2>
-            <p style="margin-bottom: 20px; color: #aaa;">Currently only UPI is available</p>
-            
-            <div class="payment-methods">
-                <div class="method-card unavailable">
-                    <div class="logo card-logo"></div>
-                    <div class="label">Credit Card</div>
-                </div>
-                <div class="method-card unavailable">
-                    <div class="logo paypal-logo">PP</div>
-                    <div class="label">PayPal</div>
-                </div>
-                <div class="method-card active" onclick="selectPayment('upi')">
-                    <div class="logo upi-logo"></div>
-                    <div class="label">UPI</div>
-                </div>
-            </div>
-            
-            <div class="summary-card">
-                <div class="summary-item">
-                    <span class="summary-label">Game</span>
-                    <span class="summary-value" id="summaryGame">-</span>
-                </div>
-                <div class="summary-item">
-                    <span class="summary-label">Player ID</span>
-                    <span class="summary-value" id="summaryID">-</span>
-                </div>
-                <div class="summary-item">
-                    <span class="summary-label">Amount</span>
-                    <span class="summary-value" id="summaryAmount">₹0</span>
-                </div>
-                <div class="summary-item">
-                    <span class="summary-label">You Get</span>
-                    <span class="summary-value" id="summaryValue">-</span>
-                </div>
-            </div>
-            
-            <button class="btn" onclick="nextStep(4)">Proceed with UPI</button>
-        </div>
-
-        <!-- Step 4: UPI Payment -->
-        <div class="step-content" id="step4">
-            <h2>Pay with UPI</h2>
-            
-            <div class="qr-container">
-                <img id="qr" src="" width="200" height="200" alt="UPI QR Code">
-            </div>
-            
-            <div class="timer" id="countdown">09:00</div>
-            
-            <p style="margin: 15px 0; font-size: 18px;">
-                UPI ID: <strong id="upiIdDisplay">officialabdulzayeed@okaxis</strong>
-            </p>
-            
-            <p style="color: #aaa; margin-bottom: 20px;">
-                Scan this QR code with any UPI app to complete your payment
-            </p>
-            
-            <a href="#" class="btn" id="upiDeepLink">Open UPI App & Pay</a>
-            
-            <div class="trust-badge">
-                <i class="fas fa-shield-alt"></i>
-                <span>Your payment is 100% secure and encrypted</span>
-            </div>
-            
-            <div class="status-indicator">
-                <div class="status-dot"></div>
-                <div class="status-text">Waiting for Payment</div>
-            </div>
-        </div>
-
-        <!-- Step 5: Payment Status -->
-        <div class="step-content" id="step5">
-            <h2>Payment Status</h2>
-            
-            <div class="payment-status">
-                <div class="status-icon status-success">
-                    <i class="fas fa-check-circle"></i>
-                </div>
-                <h3 style="color: var(--success); margin-bottom: 15px;">Payment Successful!</h3>
-                
-                <div class="transaction-details">
-                    <div class="summary-item">
-                        <span class="summary-label">Transaction ID</span>
-                        <span class="summary-value" id="transactionIdDisplay">-</span>
+                <div class="step-instructions">
+                    <div class="language-content english active">
+                        <div class="instructions">
+                            <h3>For New Users:</h3>
+                            <p>• Click on "Sign up" to create a new account</p>
+                            <p>• Fill in your details and create a password</p>
+                            <p>• Verify your email address if required</p>
+                        </div>
+                        <div class="instructions">
+                            <h3>For Existing Users:</h3>
+                            <p>• Enter your email and password</p>
+                            <p>• Click "Log in" to access your account</p>
+                            <p>• If you forgot your password, click "Forgot Password?"</p>
+                        </div>
+                        <div class="instructions">
+                            <h3>Quick Login:</h3>
+                            <p>• Click "Log in with Google" for faster access</p>
+                        </div>
                     </div>
-                    <div class="summary-item">
-                        <span class="summary-label">Amount Paid</span>
-                        <span class="summary-value" id="paidAmountDisplay">₹0</span>
-                    </div>
-                    <div class="summary-item">
-                        <span class="summary-label">Game Credits</span>
-                        <span class="summary-value" id="creditsDisplay">-</span>
+                    <div class="language-content hindi">
+                        <div class="instructions">
+                            <h3>नए उपयोगकर्ताओं के लिए:</h3>
+                            <p>• नया अकाउंट बनाने के लिए "Sign up" पर क्लिक करें</p>
+                            <p>• अपनी जानकारी भरें और पासवर्ड बनाएं</p>
+                            <p>• आवश्यक होने पर अपना ईमेल पता सत्यापित करें</p>
+                        </div>
+                        <div class="instructions">
+                            <h3>मौजूदा उपयोगकर्ताओं के लिए:</h3>
+                            <p>• अपना ईमेल और पासवर्ड दर्ज करें</p>
+                            <p>• अपने अकाउंट में प्रवेश करने के लिए "Log in" पर क्लिक करें</p>
+                            <p>• अगर आप अपना पासवर्ड भूल गए हैं, तो "Forgot Password?" पर क्लिक करें</p>
+                        </div>
+                        <div class="instructions">
+                            <h3>त्वरित लॉगिन:</h3>
+                            <p>• तेज़ एक्सेस के लिए "Log in with Google" पर क्लिक करें</p>
+                        </div>
                     </div>
                 </div>
-                
-                <p style="margin: 15px 0; color: #aaa;">
-                    Your game credits will be added within 2-5 minutes
-                </p>
-                
-                <a href="#" class="check-status-btn" onclick="resetFlow()">Make Another Payment</a>
             </div>
         </div>
+
+        <!-- Step 2: Username -->
+        <div class="guide-section">
+            <h2><span class="step-number">2</span> Create Username</h2>
+            <div class="step-content">
+                <div class="step-image">
+                    <img src="https://d1yei2z3i6k35z.cloudfront.net/12055198/69088370dff5e_Screenshot2025-11-03155533.png" alt="Enter Username">
+                </div>
+                <div class="step-instructions">
+                    <div class="language-content english active">
+                        <div class="instructions">
+                            <h3>Choose Your Username:</h3>
+                            <p>• Enter a unique username of your choice</p>
+                            <p>• Make sure it's easy to remember</p>
+                            <p>• Avoid using personal information</p>
+                            <p>• Click "Submit" when done</p>
+                        </div>
+                        <div class="instructions">
+                            <h3>Important:</h3>
+                            <p>Your username will be displayed to other players and cannot be changed easily later.</p>
+                        </div>
+                    </div>
+                    <div class="language-content hindi">
+                        <div class="instructions">
+                            <h3>अपना यूज़रनेम चुनें:</h3>
+                            <p>• अपनी पसंद का एक अद्वितीय यूज़रनेम दर्ज करें</p>
+                            <p>• सुनिश्चित करें कि यह याद रखने में आसान है</p>
+                            <p>• व्यक्तिगत जानकारी का उपयोग करने से बचें</p>
+                            <p>• हो जाने पर "Submit" पर क्लिक करें</p>
+                        </div>
+                        <div class="instructions">
+                            <h3>महत्वपूर्ण:</h3>
+                            <p>आपका यूज़रनेम अन्य खिलाड़ियों को दिखाई देगा और इसे बाद में आसानी से नहीं बदला जा सकता है।</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Select Game -->
+        <div class="guide-section">
+            <h2><span class="step-number">3</span> Choose Your Game</h2>
+            <div class="step-content">
+                <div class="step-image">
+                    <img src="https://d1yei2z3i6k35z.cloudfront.net/12055198/69088387befb7_Screenshot2025-11-03154808.png" alt="Select Game">
+                </div>
+                <div class="step-instructions">
+                    <div class="language-content english active">
+                        <div class="instructions">
+                            <h3>Game Selection:</h3>
+                            <p>• Browse through the available games</p>
+                            <p>• Select the game you want to play</p>
+                            <p>• Make sure you have the game installed on your device</p>
+                            <p>• Click "Continue" to proceed</p>
+                        </div>
+                        <div class="instructions">
+                            <h3>Note:</h3>
+                            <p>Some games may require additional downloads or specific device requirements.</p>
+                        </div>
+                    </div>
+                    <div class="language-content hindi">
+                        <div class="instructions">
+                            <h3>गेम चयन:</h3>
+                            <p>• उपलब्ध गेम्स के माध्यम से ब्राउज़ करें</p>
+                            <p>• वह गेम चुनें जिसे आप खेलना चाहते हैं</p>
+                            <p>• सुनिश्चित करें कि आपके डिवाइस पर गेम इंस्टॉल है</p>
+                            <p• आगे बढ़ने के लिए "Continue" पर क्लिक करें</p>
+                        </div>
+                        <div class="instructions">
+                            <h3>नोट:</h3>
+                            <p>कुछ गेम्स के लिए अतिरिक्त डाउनलोड या विशिष्ट डिवाइस आवश्यकताएं हो सकती हैं।</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4: Enter UID -->
+        <div class="guide-section">
+            <h2><span class="step-number">4</span> Enter Game UID</h2>
+            <div class="step-content">
+                <div class="step-image">
+                    <img src="https://d1yei2z3i6k35z.cloudfront.net/12055198/6908839744621_Screenshot2025-11-03154951.png" alt="Enter UID">
+                </div>
+                <div class="step-instructions">
+                    <div class="language-content english active">
+                        <div class="instructions">
+                            <h3>Find Your UID:</h3>
+                            <p>• Open your game and go to your profile</p>
+                            <p>• Locate your unique player ID (UID)</p>
+                            <p>• Copy the UID carefully</p>
+                            <p>• Paste it in the UID field on our platform</p>
+                            <p>• Click "Continue" to proceed</p>
+                        </div>
+                        <div class="instructions">
+                            <h3>Important:</h3>
+                            <p>Entering the correct UID is crucial for linking your game account and receiving rewards.</p>
+                        </div>
+                    </div>
+                    <div class="language-content hindi">
+                        <div class="instructions">
+                            <h3>अपना UID ढूंढें:</h3>
+                            <p>• अपना गेम खोलें और अपने प्रोफाइल पर जाएं</p>
+                            <p>• अपना अद्वितीय प्लेयर ID (UID) ढूंढें</p>
+                            <p>• UID को सावधानीपूर्वक कॉपी करें</p>
+                            <p>• इसे हमारे प्लेटफॉर्म पर UID फील्ड में पेस्ट करें</p>
+                            <p>• आगे बढ़ने के लिए "Continue" पर क्लिक करें</p>
+                        </div>
+                        <div class="instructions">
+                            <h3>महत्वपूर्ण:</h3>
+                            <p>सही UID दर्ज करना आपके गेम अकाउंट को लिंक करने और पुरस्कार प्राप्त करने के लिए महत्वपूर्ण है।</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 5: Payment -->
+        <div class="guide-section">
+            <h2><span class="step-number">5</span> Payment Process</h2>
+            <div class="step-content">
+                <div class="step-image">
+                    <img src="https://d1yei2z3i6k35z.cloudfront.net/12055198/690883af0844d_Screenshot2025-11-03155048.png" alt="Payment Method">
+                </div>
+                <div class="step-instructions">
+                    <div class="language-content english active">
+                        <div class="instructions">
+                            <h3>Select Payment Method:</h3>
+                            <p>• Choose your preferred payment method</p>
+                            <p>• UPI, Credit/Debit Card, Net Banking, etc.</p>
+                            <p>• Review all the details carefully</p>
+                            <p>• Click "Confirm and Pay" to proceed</p>
+                        </div>
+                        <div class="instructions">
+                            <h3>Security:</h3>
+                            <p>All transactions are secure and encrypted. We do not store your payment details.</p>
+                        </div>
+                    </div>
+                    <div class="language-content hindi">
+                        <div class="instructions">
+                            <h3>भुगतान विधि चुनें:</h3>
+                            <p>• अपनी पसंदीदा भुगतान विधि चुनें</p>
+                            <p>• UPI, क्रेडिट/डेबिट कार्ड, नेट बैंकिंग, आदि</p>
+                            <p>• सभी विवरणों को ध्यान से देखें</p>
+                            <p>• आगे बढ़ने के लिए "Confirm and Pay" पर क्लिक करें</p>
+                        </div>
+                        <div class="instructions">
+                            <h3>सुरक्षा:</h3>
+                            <p>सभी लेन-देन सुरक्षित और एन्क्रिप्टेड हैं। हम आपके भुगतान विवरण संग्रहीत नहीं करते हैं।</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 6: UPI Payment -->
+        <div class="guide-section">
+            <h2><span class="step-number">6</span> Complete Payment</h2>
+            <div class="step-content">
+                <div class="step-image">
+                    <img src="https://d1yei2z3i6k35z.cloudfront.net/12055198/690883da902c7_Screenshot2025-11-03155242.png" alt="UPI Payment">
+                </div>
+                <div class="step-instructions">
+                    <div class="language-content english active">
+                        <div class="instructions">
+                            <h3>UPI Payment:</h3>
+                            <p>• Open your UPI app (Google Pay, PhonePe, Paytm, etc.)</p>
+                            <p>• Scan the QR code shown on screen</p>
+                            <p>• Or enter the UPI ID manually</p>
+                            <p>• Enter the exact amount and complete payment</p>
+                        </div>
+                        <div class="instructions">
+                            <h3>After Payment:</h3>
+                            <p>Wait for the payment confirmation. Do not close the window until you see the success message.</p>
+                        </div>
+                    </div>
+                    <div class="language-content hindi">
+                        <div class="instructions">
+                            <h3>UPI भुगतान:</h3>
+                            <p>• अपना UPI ऐप खोलें (Google Pay, PhonePe, Paytm, आदि)</p>
+                            <p>• स्क्रीन पर दिखाए गए QR कोड को स्कैन करें</p>
+                            <p>• या UPI ID को मैन्युअल रूप से दर्ज करें</p>
+                            <p>• सटीक राशि दर्ज करें और भुगतान पूरा करें</p>
+                        </div>
+                        <div class="instructions">
+                            <h3>भुगतान के बाद:</h3>
+                            <p>भुगतान पुष्टि के लिए प्रतीक्षा करें। सफलता संदेश देखने तक विंडो बंद न करें।</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 7: Confirmation -->
+        <div class="guide-section">
+            <h2><span class="step-number">7</span> Confirmation</h2>
+            <div class="step-content">
+                <div class="step-image">
+                    <img src="https://tse3.mm.bing.net/th/id/OIP.Lq_2RHz-2ocdSEqb2yIt7AHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Payment Success">
+                </div>
+                <div class="step-instructions">
+                    <div class="language-content english active">
+                        <div class="instructions">
+                            <h3>Payment Successful:</h3>
+                            <p>• You will receive a confirmation message</p>
+                            <p>• Check your registered email for the receipt</p>
+                            <p>• An SMS confirmation will be sent to your mobile</p>
+                            <p>• Your game account will be updated within 24 hours</p>
+                        </div>
+                        <div class="instructions">
+                            <h3>Next Steps:</h3>
+                            <p>Launch your game and check for the updates. If you face any issues, contact our support team.</p>
+                        </div>
+                    </div>
+                    <div class="language-content hindi">
+                        <div class="instructions">
+                            <h3>भुगतान सफल:</h3>
+                            <p>• आपको एक पुष्टिकरण संदेश प्राप्त होगा</p>
+                            <p>• रसीद के लिए अपना पंजीकृत ईमेल जांचें</p>
+                            <p>• आपके मोबाइल पर एक SMS पुष्टिकरण भेजा जाएगा</p>
+                            <p>• आपका गेम अकाउंट 24 घंटे के भीतर अपडेट हो जाएगा</p>
+                        </div>
+                        <div class="instructions">
+                            <h3>अगले कदम:</h3>
+                            <p>अपना गेम लॉन्च करें और अपडेट के लिए जांचें। यदि आपको कोई समस्या आती है, तो हमारी सहायता टीम से संपर्क करें।</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>HTML Future Stick &copy; 2025. All rights reserved.</p>
+            <p>Need help? Contact our support team at support@htmlfuturestick.com</p>
+        </footer>
     </div>
 
     <script>
-        let selectedGame = "";
-        let selectedPayment = "upi";
-        let countdownInterval;
-        let currentAmount = 800;
-        
-        // Update step indicators based on current step
-        function updateStepIndicators(step) {
-            const steps = document.querySelectorAll('.step');
-            const lines = document.querySelectorAll('.step-line');
-            
-            // Reset all steps
-            steps.forEach((s, index) => {
-                if (index < step - 1) {
-                    s.classList.add('completed');
-                    s.classList.remove('active');
-                } else if (index === step - 1) {
-                    s.classList.add('active');
-                    s.classList.remove('completed');
-                } else {
-                    s.classList.remove('active', 'completed');
-                }
-            });
-            
-            // Update lines
-            lines.forEach((line, index) => {
-                if (index < step - 2) {
-                    line.classList.add('active');
-                } else {
-                    line.classList.remove('active');
-                }
-            });
-        }
-        
-        // Select game function
-        function selectGame(game) {
-            selectedGame = game;
-            
-            // Update UI
-            document.querySelectorAll('.game-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            
-            const selectedCard = document.querySelector(`.game-card:nth-child(${game === 'bgmi' ? 1 : 2})`);
-            selectedCard.classList.add('selected');
-            
-            // Enable next button
-            document.getElementById('next1').disabled = false;
-            
-            // Update conversion display
-            calculate();
-        }
-        
-        // Validate inputs
-        function validate() {
-            const uid = document.getElementById('uid').value;
-            const amount = parseInt(document.getElementById('amount').value);
-            
-            // Game-specific UID validation
-            const validUID = (selectedGame === 'bgmi' && uid.length >= 6 && uid.length <= 12) ||
-                            (selectedGame === 'ff' && uid.length >= 5 && uid.length <= 10);
-            
-            const validAmount = amount >= 800;
-            
-            document.getElementById('next2').disabled = !(validUID && validAmount);
-            
-            // Update warning message
-            const warning = document.getElementById('warning');
-            if (amount < 800) {
-                warning.innerHTML = `<i class="fas fa-exclamation-circle"></i> Minimum amount: ₹800`;
-                warning.style.display = 'flex';
-            } else if (!validUID) {
-                warning.innerHTML = `<i class="fas fa-exclamation-circle"></i> Please enter a valid Player ID`;
-                warning.style.display = 'flex';
-            } else {
-                warning.style.display = 'none';
-            }
-        }
-        
-        // Calculate conversion
-        function calculate() {
-            const amount = parseInt(document.getElementById('amount').value) || 0;
-            currentAmount = amount;
-            let result = "Select a game to see conversion";
-            
-            if (selectedGame === 'bgmi') {
-                result = `You will get ${Math.floor(amount * 10000 / 821)} UC`;
-            } else if (selectedGame === 'ff') {
-                result = `You will get ${Math.floor(amount * 20000 / 811)} Diamonds`;
-            }
-            
-            document.getElementById('conversion').innerText = result;
-            validate();
-        }
-        
-        // Select payment method
-        function selectPayment(method) {
-            selectedPayment = method;
-            // For this demo, only UPI is available
-        }
-        
-        // Generate UPI payment URL
-        function generateUpiUrl(amount) {
-            const upiId = 'officialabdulzayeed@okaxis';
-            const payeeName = 'DUCGameMoney';
-            const merchantCode = 'CYBER123';
-            
-            return `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payeeName)}&am=${amount}&cu=INR&mc=${merchantCode}`;
-        }
-        
-        // Generate QR code using external API
-        function generateQrCode(amount) {
-            const upiUrl = generateUpiUrl(amount);
-            const qrImg = document.getElementById('qr');
-            
-            // Create QR code using external API
-            const encodedUpiUrl = encodeURIComponent(upiUrl);
-            qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodedUpiUrl}`;
-            
-            // Set up UPI deep link
-            document.getElementById('upiDeepLink').href = upiUrl;
-            
-            // Auto-redirect to UPI app after 5 seconds
-            setTimeout(function() {
-                window.location.href = upiUrl;
-            }, 5000);
-        }
-        
-        // Navigate between steps
-        function nextStep(step) {
-            // Hide all steps
-            document.querySelectorAll('.step-content').forEach(step => {
-                step.classList.remove('active');
-            });
-            
-            // Show requested step
-            document.getElementById(`step${step}`).classList.add('active');
-            
-            // Update step indicators
-            updateStepIndicators(step);
-            
-            // Step-specific actions
-            if (step === 3) {
-                // Update summary
-                const uid = document.getElementById('uid').value;
-                const amount = parseInt(document.getElementById('amount').value);
-                
-                document.getElementById('summaryGame').innerText = 
-                    selectedGame === 'bgmi' ? 'BATTLEGROUNDS MOBILE INDIA' : 'FREE FIRE MAX';
-                document.getElementById('summaryID').innerText = uid;
-                document.getElementById('summaryAmount').innerText = `₹${amount}`;
-                
-                if (selectedGame === 'bgmi') {
-                    document.getElementById('summaryValue').innerText = 
-                        `${Math.floor(amount * 10000 / 821)} UC`;
-                } else {
-                    document.getElementById('summaryValue').innerText = 
-                        `${Math.floor(amount * 20000 / 811)} Diamonds`;
-                }
-            }
-            
-            if (step === 4) {
-                // Generate QR code with actual amount
-                const amount = parseInt(document.getElementById('amount').value);
-                generateQrCode(amount);
-                
-                // Start countdown
-                let minutes = 9;
-                let seconds = 0;
-                
-                function updateCountdown() {
-                    const m = minutes < 10 ? "0" + minutes : minutes;
-                    const s = seconds < 10 ? "0" + seconds : seconds;
-                    document.getElementById('countdown').textContent = `${m}:${s}`;
-                    
-                    if (minutes === 0 && seconds === 0) {
-                        clearInterval(countdownInterval);
-                        // Simulate payment success after timeout
-                        simulatePaymentSuccess();
-                    } else if (seconds === 0) {
-                        minutes--;
-                        seconds = 59;
-                    } else {
-                        seconds--;
-                    }
-                }
-                
-                updateCountdown();
-                clearInterval(countdownInterval);
-                countdownInterval = setInterval(updateCountdown, 1000);
-            }
-        }
-        
-        // Simulate payment success (like Rajorepay)
-        function simulatePaymentSuccess() {
-            // Generate random transaction ID
-            const transactionId = 'TXN' + Math.floor(1000000000 + Math.random() * 9000000000);
-            const amount = parseInt(document.getElementById('amount').value);
-            
-            // Update payment status
-            document.getElementById('transactionIdDisplay').textContent = transactionId;
-            document.getElementById('paidAmountDisplay').textContent = `₹${amount}`;
-            
-            if (selectedGame === 'bgmi') {
-                document.getElementById('creditsDisplay').textContent = 
-                    `${Math.floor(amount * 10000 / 821)} UC`;
-            } else {
-                document.getElementById('creditsDisplay').textContent = 
-                    `${Math.floor(amount * 20000 / 811)} Diamonds`;
-            }
-            
-            // Move to success step
-            nextStep(5);
-        }
-        
-        // Reset flow for another payment
-        function resetFlow() {
-            // Reset form
-            document.getElementById('uid').value = '';
-            document.getElementById('amount').value = '800';
-            selectedGame = '';
-            
-            // Reset game selection
-            document.querySelectorAll('.game-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            
-            // Reset steps
-            nextStep(1);
-            updateStepIndicators(1);
-            
-            // Reset conversion
-            calculate();
-        }
-        
-        // Initialize
+        // Language toggle functionality
         document.addEventListener('DOMContentLoaded', function() {
-            calculate();
-            updateStepIndicators(1);
+            const langButtons = document.querySelectorAll('.lang-btn');
             
-            // Simulate payment after 30 seconds if user doesn't pay
-            setTimeout(() => {
-                if (document.getElementById('step4').classList.contains('active')) {
-                    simulatePaymentSuccess();
-                }
-            }, 30000);
+            langButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    langButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Get the selected language
+                    const selectedLang = this.getAttribute('data-lang');
+                    
+                    // Hide all language content
+                    document.querySelectorAll('.language-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Show selected language content
+                    document.querySelectorAll(`.language-content.${selectedLang}`).forEach(content => {
+                        content.classList.add('active');
+                    });
+                });
+            });
         });
     </script>
 </body>
